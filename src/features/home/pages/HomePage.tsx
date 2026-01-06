@@ -1,18 +1,21 @@
 import { Typography } from "antd";
+import { useAppAuth0 } from "../../../core/hooks/useAppAuth0";
 
 const { Title, Paragraph } = Typography;
 
-// Replace this with your actual user object or context
-const user = { email: "user@example.com" };
-
 export const HomePage = () => {
+  const { user } = useAppAuth0();
+
   return (
-    <>
+    <main className="px-4 mx-auto max-w-5xl">
       <div>
-        <Title level={2}>Welcome to MyAIImg! 👋</Title>
-        <Paragraph>
-          Hello, <strong>{user?.email}</strong>! You are now logged in and ready to start using the
-          application.
+        <Title className="text-app text-center" level={2}>
+          Welcome to MyAIImg! 👋
+        </Title>
+        <Paragraph className="text-app text-center">
+          Hello, <strong>{user?.name}</strong>! now you can create stunning AI-generated images with
+          ease. Get started by exploring the features and tools we offer to bring your imagination
+          to life.
         </Paragraph>
       </div>
 
@@ -29,6 +32,6 @@ export const HomePage = () => {
           {JSON.stringify(user, null, 2)}
         </pre>
       </div>
-    </>
+    </main>
   );
 };
