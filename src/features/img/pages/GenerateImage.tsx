@@ -1,3 +1,10 @@
+import { ChatSection, InputSection } from "@img/components";
+
 export const GenerateImage = () => {
-  return <h1>Generate Image</h1>;
+  return (
+    <div className="flex flex-col h-full">
+      <ChatSection />
+      <InputSection />
+    </div>
+  );
 };
