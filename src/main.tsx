@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
 import App from "./App.jsx";
 import { AppAuth0Provider } from "./AppAuth0Provider";
-import { WelcomePage } from "./features/img/pages/WelcomePage.js";
+import { HomePage } from "./features/home/pages/HomePage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<App />}>
-            <Route index path="/" element={<WelcomePage />} />
+            <Route index path="/" element={<HomePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
