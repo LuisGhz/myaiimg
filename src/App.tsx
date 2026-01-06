@@ -1,22 +1,24 @@
 import { useAppAuth0 } from "./core/hooks/useAppAuth0";
-import { Typography, Button, Layout } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import { AppSider } from "./components/AppSider";
+import { Layout } from "antd";
+import { AppSider } from "./core/components/AppSider";
 import { useAppStore } from "./store/app/app-store";
 import { useEffect } from "react";
 import { Outlet } from "react-router";
+import { AppHeader } from "./core/components/AppHeader";
 
-const { Title } = Typography;
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 type AuthAppProps = {
   children: React.ReactNode;
 };
 
 const AuthApp = ({ children }: AuthAppProps) => {
-  const { isLoading, isAuthenticated } = useAppAuth0();
+  const { isLoading, isAuthenticated, login } = useAppAuth0();
 
-  if (isLoading) return "Loading...";
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) login();
+  }, [isLoading, isAuthenticated, login]);
+
   if (!isAuthenticated) return null;
 
   return <>{children}</>;
@@ -45,14 +47,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggleSider = () => {
-    if (isSidebarCollapsed) {
-      expand();
-    } else {
-      collapse();
-    }
-  };
-
   const handleBackdropClick = () => {
     if (isMobile) collapse();
   };
@@ -60,28 +54,14 @@ function App() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {isMobile && !isSidebarCollapsed && (
-        <div className="backdrop" onClick={handleBackdropClick} />
+        <div
+          className="fixed top-0 left-0 z-50 bg-black/35 w-full h-dvh"
+          onClick={handleBackdropClick}
+        />
       )}
       <AppSider />
       <Layout style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}>
-        <Header className="bg-app">
-          {(isSidebarCollapsed || isMobile) && (
-            <Button
-              type="text"
-              icon={<MenuOutlined />}
-              onClick={toggleSider}
-              style={{
-                fontSize: "16px",
-                width: 48,
-                height: 48,
-              }}
-            />
-          )}
-          <Title className="text-app" level={3} style={{ margin: 0 }}>
-            MyAIImg
-          </Title>
-        </Header>
-
+        <AppHeader />
         <Content className="bg-app">
           <Outlet />
         </Content>
