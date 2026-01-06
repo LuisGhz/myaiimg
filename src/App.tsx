@@ -60,12 +60,10 @@ function App() {
         />
       )}
       <AppSider />
-      <Layout style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}>
+      <Layout className="bg-app" style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}>
         <AppHeader />
-        <Content className="bg-app">
-          <main className="px-4 mx-auto max-w-5xl">
+        <Content className="px-2 mx-auto w-full max-w-5xl">
             <Outlet />
-          </main>
         </Content>
       </Layout>
     </Layout>
