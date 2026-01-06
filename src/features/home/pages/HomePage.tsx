@@ -7,7 +7,7 @@ export const HomePage = () => {
   const { user } = useAppAuth0();
 
   return (
-    <main className="px-4 mx-auto max-w-5xl">
+    <>
       <div>
         <Title className="text-app text-center" level={2}>
           Welcome to MyAIImg! 👋
@@ -32,6 +32,6 @@ export const HomePage = () => {
           {JSON.stringify(user, null, 2)}
         </pre>
       </div>
-    </main>
+    </>
   );
 };
