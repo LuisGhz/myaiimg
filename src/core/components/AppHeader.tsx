@@ -1,6 +1,6 @@
 import { Layout, Typography } from "antd";
 import { MenuUnfoldOutlined } from "@ant-design/icons";
-import { useAppStore } from "../../store/app/app-store";
+import { useAppStore } from "@st/app/app-store";
 
 const { Header } = Layout;
 const { Title } = Typography;

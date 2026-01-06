@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import { HomePage } from "../features/home/pages/HomePage";
 import App from "../App";
+import { HomePage } from "@home/pages/HomePage";
+import { GenerateImage } from "@img/pages/GenerateImage";
 
 export const AppRoutes = () => {
   return (
@@ -8,6 +9,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route element={<App />}>
           <Route index path="/" element={<HomePage />} />
+          <Route path="/generate" element={<GenerateImage />} />
         </Route>
       </Routes>
     </BrowserRouter>

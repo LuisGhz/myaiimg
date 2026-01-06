@@ -1,3 +1,3 @@
 export const GenerateImage = () => {
-  return <></>;
+  return <h1>Generate Image</h1>;
 };

@@ -1,10 +1,10 @@
-import { useAppAuth0 } from "./core/hooks/useAppAuth0";
-import { Layout } from "antd";
-import { AppSider } from "./core/components/AppSider";
-import { useAppStore } from "./store/app/app-store";
 import { useEffect } from "react";
 import { Outlet } from "react-router";
-import { AppHeader } from "./core/components/AppHeader";
+import { Layout } from "antd";
+import { useAppAuth0 } from "@core/hooks/useAppAuth0";
+import { AppSider } from "@core/components/AppSider";
+import { useAppStore } from "@st/app/app-store";
+import { AppHeader } from "@core/components/AppHeader";
 
 const { Content } = Layout;
 

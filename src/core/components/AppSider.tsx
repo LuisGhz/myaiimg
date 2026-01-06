@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 import { Link } from "react-router";
-import { useAppStore } from "../../store/app/app-store";
+import { useAppStore } from "@st/app/app-store";
 import { LogoutOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { useAppAuth0 } from "../hooks/useAppAuth0";
+import { useAppAuth0 } from "@core/hooks/useAppAuth0";
 
 const { Sider } = Layout;
 

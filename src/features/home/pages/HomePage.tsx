@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import { useAppAuth0 } from "../../../core/hooks/useAppAuth0";
+import { useAppAuth0 } from "@core/hooks/useAppAuth0";
 
 const { Title, Paragraph } = Typography;
 

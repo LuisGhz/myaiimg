@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { AppStoreType } from "./app-store.type";
+import type { AppStoreType } from "@st/app/app-store.type";
 
 export const useAppStore = create<AppStoreType>((set) => ({
   isSidebarCollapsed: false,
