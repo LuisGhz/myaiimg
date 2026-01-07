@@ -1,6 +1,10 @@
+import { useChatStore } from "@/store/chat/chat-store";
 import { Select } from "antd";
 
 export const GptOptions = () => {
+  const { size, style, quality } = useChatStore((state) => state.gptOptions);
+  const setGptOptions = useChatStore((state) => state.setGptOptions);
+
   return (
     <div className="flex gap-2">
       <Select
@@ -8,6 +12,8 @@ export const GptOptions = () => {
         style={{
           width: 110,
         }}
+        value={size}
+        onChange={(value) => setGptOptions({ size: value })}
         options={[
           {
             value: "1024x1024",
@@ -28,6 +34,8 @@ export const GptOptions = () => {
         style={{
           width: 100,
         }}
+        value={quality}
+        onChange={(value) => setGptOptions({ quality: value })}
         options={[
           {
             value: "auto",
@@ -52,6 +60,8 @@ export const GptOptions = () => {
         style={{
           width: 100,
         }}
+        value={style}
+        onChange={(value) => setGptOptions({ style: value })}
         options={[
           {
             value: "natural",
