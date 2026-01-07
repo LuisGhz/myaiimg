@@ -16,15 +16,15 @@ export const NanoBananaOptions = () => {
         onChange={(value) => setNanoBananaOptions({ size: value })}
         options={[
           {
-            value: "1k",
+            value: "1K",
             label: "1K",
           },
           {
-            value: "2k",
+            value: "2K",
             label: "2K",
           },
           {
-            value: "4k",
+            value: "4K",
             label: "4K",
           },
         ]}
