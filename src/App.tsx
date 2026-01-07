@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ height: "100vh" }}>
       {isMobile && !isSidebarCollapsed && (
         <div
           className="fixed top-0 left-0 z-50 bg-black/35 w-full h-dvh"
@@ -67,7 +67,7 @@ function App() {
         style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}
       >
         <AppHeader />
-        <Content className="px-2 mx-auto w-full max-w-5xl">
+        <Content className="px-2 mx-auto w-full max-w-5xl overflow-hidden h-full">
           <Outlet />
         </Content>
       </Layout>
