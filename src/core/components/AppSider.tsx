@@ -44,7 +44,7 @@ export const AppSider = () => {
           <li>
             <Link
               className="text-app hocusvi:bg-blue-500! hocusvi:text-white! dark:hocusvi:bg-gray-900! transc200 block py-2 px-2 wcag-outline"
-              to="/saved"
+              to="/generated"
             >
               <span>View saved images</span>
             </Link>

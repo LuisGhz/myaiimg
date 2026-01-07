@@ -48,4 +48,8 @@ export const chatApi = {
       key: response.key,
     };
   },
+
+  generatedImages() {
+    return apiClient.get<{ src: string }[]>("/img/generated");
+  },
 };

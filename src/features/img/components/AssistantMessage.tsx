@@ -33,7 +33,7 @@ export const AssistantMessage = ({ msg }: UserMessageProps) => {
         </div>
       )}
       {msg.file && (
-        <div className="relative inline-block">
+        <div className="relative inline-block group overflow-hidden rounded shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105">
           <img
             className="max-h-80 w-auto rounded"
             src={msg.file instanceof File ? URL.createObjectURL(msg.file) : msg.file}
