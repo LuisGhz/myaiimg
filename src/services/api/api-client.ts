@@ -52,6 +52,12 @@ class ApiClient {
       return response.json();
     }
 
+    // If the response is an image (binary), return a Blob so callers
+    // can convert it to a File or handle it as needed.
+    if (contentType?.startsWith("image/")) {
+      return (await response.blob()) as unknown as T;
+    }
+
     return response.text() as T;
   }
 
