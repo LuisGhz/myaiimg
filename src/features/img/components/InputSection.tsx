@@ -20,7 +20,7 @@ export const InputSection = () => {
   };
 
   return (
-    <section>
+    <section className="mt-1.5">
       <PromptFilePreview />
       <ModelConfig />
       <div className="p-2 flex gap-4 items-center">
