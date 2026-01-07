@@ -3,23 +3,25 @@ import { useChatStore } from "@st/chat/chat-store";
 export const useChat = () => {
   const prompt = useChatStore((state) => state.prompt);
   const promptFile = useChatStore((state) => state.promptFile);
+  const loading = useChatStore((state) => state.loading);
+  const error = useChatStore((state) => state.error);
   const setPrompt = useChatStore((state) => state.setPrompt);
   const setPromptFile = useChatStore((state) => state.setPromptFile);
-  const addMessage = useChatStore((state) => state.addMessage);
+  const sendPrompt = useChatStore((state) => state.sendPrompt);
 
-  const onSendPrompt = () => {
-    if (!prompt.trim()) return;
-    addMessage({ role: "user", prompt, file: promptFile || undefined });
+  const onSendPrompt = async () => {
+    if (!prompt.trim() || loading) return;
+
+    await sendPrompt(prompt, promptFile);
     setPrompt("");
-    addMessage({
-      role: "assistant",
-      prompt: "Image generation in progress...",
-      file: promptFile || undefined,
-    });
-    if (promptFile) setPromptFile(null);
+    setPromptFile(null);
   };
 
   return {
+    prompt,
+    promptFile,
+    loading,
+    error,
     onSendPrompt,
   };
 };
