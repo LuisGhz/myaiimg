@@ -2,7 +2,7 @@ import { useChatStore } from "@/store/chat/chat-store";
 import { Select } from "antd";
 
 export const GptOptions = () => {
-  const { size, style, quality } = useChatStore((state) => state.gptOptions);
+  const { size, quality } = useChatStore((state) => state.gptOptions);
   const setGptOptions = useChatStore((state) => state.setGptOptions);
 
   return (
@@ -52,24 +52,6 @@ export const GptOptions = () => {
           {
             value: "high",
             label: "High",
-          },
-        ]}
-      />
-      <Select
-        placeholder="Style"
-        style={{
-          width: 100,
-        }}
-        value={style}
-        onChange={(value) => setGptOptions({ style: value })}
-        options={[
-          {
-            value: "natural",
-            label: "Natural",
-          },
-          {
-            value: "vivid",
-            label: "Vivid",
           },
         ]}
       />

@@ -17,7 +17,7 @@ export const useChatStore = create<ChatStoreType>((set, get) => ({
     style: "natural",
   },
   nanoBananaOptions: {
-    size: "1k",
+    size: "1K",
     aspectRatio: "1:1",
   },
   messages: [],
@@ -39,10 +39,9 @@ export const useChatStore = create<ChatStoreType>((set, get) => ({
       gptOptions: {
         size: "1024x1024",
         quality: "medium",
-        style: "natural",
       },
       nanoBananaOptions: {
-        size: "1k",
+        size: "1K",
         aspectRatio: "1:1",
       },
     }),

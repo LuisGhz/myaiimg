@@ -9,11 +9,10 @@ export type ChatMessage = {
 export type GptOptionsType = {
   size: "1024x1024" | "1536x1024" | "1024x1536";
   quality: "auto" | "low" | "medium" | "high";
-  style: "natural" | "vivid";
 };
 
 export type NanoBananaOptionsType = {
-  size: "1k" | "2k" | "4k";
+  size: "1K" | "2K" | "4K";
   aspectRatio: "21:9" | "16:9" | "4:3" | "3:2" | "1:1" | "9:16" | "3:4" | "2:3" | "5:4" | "4:5";
 };
 

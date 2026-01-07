@@ -30,11 +30,11 @@ export const ModelConfig = () => {
             label: "GPT Image 1 mini",
           },
           {
-            value: "nano-banana",
+            value: "gemini-2.5-flash-image",
             label: "Nano Banana",
           },
           {
-            value: "nano-banana-pro",
+            value: "gemini-3-pro-image-preview",
             label: "Nano Banana Pro",
           },
         ]}
