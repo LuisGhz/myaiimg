@@ -1,11 +1,18 @@
 import { Select } from "antd";
-import { useState } from "react";
 import { GptOptions } from "./GptOptions";
 import { NanoBananaOptions } from "./NanoBananaOptions";
+import { useChatStore } from "@/store/chat/chat-store";
+import { useEffect } from "react";
 
 export const ModelConfig = () => {
-  const [model, setModel] = useState<string | null>(null);
+  const model = useChatStore((state) => state.model);
+  const setModel = useChatStore((state) => state.setModel);
+  const resetModelOptions = useChatStore((state) => state.resetModelOptions);
 
+  useEffect(() => {
+    resetModelOptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [model]);
   return (
     <section className="flex gap-3">
       <Select
@@ -17,10 +24,6 @@ export const ModelConfig = () => {
           {
             value: "gpt-image-1.5",
             label: "GPT Image 1.5",
-          },
-          {
-            value: "gpt-image-1",
-            label: "GPT Image 1",
           },
           {
             value: "gpt-image-1-mini",
