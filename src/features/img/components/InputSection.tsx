@@ -4,6 +4,7 @@ import { useChatStore } from "@st/chat/chat-store";
 import { PromptFilePreview } from "./PromptFilePreview";
 import { useChat } from "@img/hooks";
 import { useRef } from "react";
+import { ModelConfig } from "./ModelConfig";
 
 const { TextArea } = Input;
 
@@ -12,7 +13,7 @@ export const InputSection = () => {
   const prompt = useChatStore((state) => state.prompt);
   const setPrompt = useChatStore((state) => state.setPrompt);
   const setPromptFile = useChatStore((state) => state.setPromptFile);
-  const { onSendPrompt } = useChat();
+  const { onSendPrompt, loading } = useChat();
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) setPromptFile(e.target.files[0]);
@@ -21,6 +22,7 @@ export const InputSection = () => {
   return (
     <section>
       <PromptFilePreview />
+      <ModelConfig />
       <div className="p-2 flex gap-4 items-center">
         <input className="hidden" ref={inputFile} type="file" onChange={handleFileSelect} />
         <button
@@ -39,6 +41,7 @@ export const InputSection = () => {
           className="flex items-center justify-center cursor-pointer wcag-outline hocusvi:bg-gray-950 transc200 w-12 h-12 rounded-full"
           type="button"
           onClick={onSendPrompt}
+          disabled={loading}
         >
           <SendOutlined className="text-2xl text-white!" />
         </button>
