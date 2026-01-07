@@ -15,6 +15,10 @@ export type GenerateImageRequest = {
   file?: File;
   model: string;
   options: Record<string, string>;
+  lastAssistantGeneratedImage?: {
+    file: File;
+    key: string;
+  };
 };
 
 export type GenerateImageResponse = {

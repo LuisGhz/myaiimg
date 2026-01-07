@@ -52,4 +52,5 @@ export const useChatStore = create<ChatStoreType>((set, get) => ({
   setLoading: (loading: boolean) => set({ loading }),
   setError: (error: string | null) => set({ error }),
   sendPrompt: () => sendPromptAction(get, set),
+  setLastAssistantGeneratedImage: (image) => set({ lastAssistantGeneratedImage: image }),
 }));

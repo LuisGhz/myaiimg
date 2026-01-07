@@ -1,4 +1,4 @@
-import { chatApi } from "@/services";
+import { chatApi, type GenerateImageRequest } from "@/services";
 import type { ChatStoreType, ChatMessage } from "../chat-store.type";
 
 export const sendPromptAction = async (
@@ -16,16 +16,28 @@ export const sendPromptAction = async (
 
   set({ loading: true, error: null, prompt: "" });
   try {
-    const response = await chatApi.generateImage({
+    const req: GenerateImageRequest = {
       prompt: promptToSend,
       file: file || undefined,
       model,
       options,
-    });
+    };
+    const lastAssistantGeneratedImage = state.lastAssistantGeneratedImage;
+    if (lastAssistantGeneratedImage) req.lastAssistantGeneratedImage = lastAssistantGeneratedImage;
+
+    const response = await chatApi.generateImage(req);
 
     const assistantMessage = state.messages[state.messages.length - 1];
     assistantMessage.file = response.file || undefined;
     assistantMessage.key = response.key;
+
+    if (response.file && response.key)
+      set({
+        lastAssistantGeneratedImage: {
+          file: response.file,
+          key: response.key,
+        },
+      });
 
     set((state) => ({
       messages: [...state.messages.slice(0, -1), assistantMessage],

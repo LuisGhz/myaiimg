@@ -17,6 +17,11 @@ export type NanoBananaOptionsType = {
   aspectRatio: "21:9" | "16:9" | "4:3" | "3:2" | "1:1" | "9:16" | "3:4" | "2:3" | "5:4" | "4:5";
 };
 
+export type LastAssistantGeneratedImageType = {
+  file: File;
+  key: string;
+};
+
 export type ChatStoreType = {
   prompt: string;
   promptFile: File | null;
@@ -26,6 +31,7 @@ export type ChatStoreType = {
   messages: ChatMessage[];
   loading: boolean;
   error: string | null;
+  lastAssistantGeneratedImage?: LastAssistantGeneratedImageType;
   setPrompt: (prompt: string) => void;
   setPromptFile: (file: File | null) => void;
   setModel: (model: string) => void;
@@ -37,4 +43,5 @@ export type ChatStoreType = {
   sendPrompt: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
+  setLastAssistantGeneratedImage: (image: LastAssistantGeneratedImageType | undefined) => void;
 };
