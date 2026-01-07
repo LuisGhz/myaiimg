@@ -5,6 +5,7 @@ import { useAppAuth0 } from "@core/hooks/useAppAuth0";
 import { AppSider } from "@core/components/AppSider";
 import { useAppStore } from "@st/app/app-store";
 import { AppHeader } from "@core/components/AppHeader";
+import { useApiAuth } from "@/services";
 
 const { Content } = Layout;
 
@@ -30,6 +31,7 @@ function App() {
   const setIsMobile = useAppStore((state) => state.setIsMobile);
   const collapse = useAppStore((state) => state.collapse);
   const expand = useAppStore((state) => state.expand);
+  useApiAuth();
 
   const mobileBreakpoint = 991;
 
@@ -60,10 +62,13 @@ function App() {
         />
       )}
       <AppSider />
-      <Layout className="bg-app" style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}>
+      <Layout
+        className="bg-app"
+        style={{ marginLeft: isMobile ? 0 : isSidebarCollapsed ? 80 : 250 }}
+      >
         <AppHeader />
         <Content className="px-2 mx-auto w-full max-w-5xl">
-            <Outlet />
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
