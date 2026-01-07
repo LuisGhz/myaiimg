@@ -1,6 +1,10 @@
+import { useChatStore } from "@/store/chat/chat-store";
 import { Select } from "antd";
 
 export const NanoBananaOptions = () => {
+  const { size, aspectRatio } = useChatStore((state) => state.nanoBananaOptions);
+  const setNanoBananaOptions = useChatStore((state) => state.setNanoBananaOptions);
+
   return (
     <div className="flex gap-2">
       <Select
@@ -8,6 +12,8 @@ export const NanoBananaOptions = () => {
         style={{
           width: 100,
         }}
+        value={size}
+        onChange={(value) => setNanoBananaOptions({ size: value })}
         options={[
           {
             value: "1k",
@@ -28,6 +34,8 @@ export const NanoBananaOptions = () => {
         style={{
           width: 100,
         }}
+        value={aspectRatio}
+        onChange={(value) => setNanoBananaOptions({ aspectRatio: value })}
         options={[
           {
             label: "Landscape",
