@@ -14,7 +14,7 @@ export const UserMessage = ({ msg }: UserMessageProps) => {
           alt="Message Attachment"
         />
       )}
-      <p className="inline-block p-2 rounded text-white bg-blue-500 dark:bg-gray-950">
+      <p className="inline-block p-2 rounded text-white bg-blue-500 dark:bg-gray-950 mb-1">
         {msg.prompt}
       </p>
     </div>
