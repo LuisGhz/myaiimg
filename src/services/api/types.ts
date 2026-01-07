@@ -13,13 +13,13 @@ export type ApiError = {
 export type GenerateImageRequest = {
   prompt: string;
   file?: File;
+  model: string;
+  options: Record<string, string>;
 };
 
 export type GenerateImageResponse = {
-  id: string;
-  imageUrl: string;
-  prompt: string;
-  createdAt: string;
+  image: string; // base64-encoded image
+  key: string; // S3 or storage key
 };
 
 export type ChatMessageResponse = {
