@@ -24,7 +24,7 @@ export const AppSider = () => {
       <nav className="flex flex-col h-full">
         <section className="flex justify-end px-3 pt-4 pb-2">
           <button
-            className="text-white cursor-pointer wcag-outline bg-blue-500 dark:bg-transparent  
+            className="text-white cursor-pointer wcag-outline-vi bg-blue-500 dark:bg-transparent  
               hocusvi:bg-blue-600 dark:hocusvi:bg-gray-900 rounded p-1.5 transc200"
             type="button"
             onClick={collapse}
@@ -53,7 +53,7 @@ export const AppSider = () => {
         <ul>
           <li className="flex justify-end p-4">
             <button
-              className="text-white flex items-center gap-2 cursor-pointer hocus:bg-blue-400 wcag-outline transc200 bg-blue-500 dark:bg-transparent  
+              className="text-white flex items-center gap-2 cursor-pointer hocus:bg-blue-400 wcag-outline-vi transc200 bg-blue-500 dark:bg-transparent  
               hocusvi:bg-blue-600 dark:hocusvi:bg-gray-900 py-2 px-3 rounded"
               type="button"
               onClick={logout}

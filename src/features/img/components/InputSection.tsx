@@ -43,7 +43,7 @@ export const InputSection = () => {
           onChange={(e) => setPrompt(e.target.value)}
         />
         <button
-          className="flex items-center justify-center cursor-pointer wcag-outline hocusvi:bg-gray-950 transc200 w-12 h-12 rounded-full"
+          className="flex items-center justify-center cursor-pointer wcag-outline-vi hocusvi:bg-gray-950 transc200 w-12 h-12 rounded-full"
           type="button"
           onClick={shouldShowReload ? clearMessages : onSendPrompt}
           disabled={loading}
