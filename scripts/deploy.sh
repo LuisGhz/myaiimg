@@ -28,7 +28,7 @@ echo "✓ All environment variables are set"
 
 IMAGE_NAME="${DOCKERHUB_USER}/myaiimg:latest"
 CONTAINER_NAME="myaiimg"
-LOCALPORT=3051
+LOCALPORT=3054
 DOCKERPORT=80
 
 # Login to Docker Hub using the access token from the OS environment variable
