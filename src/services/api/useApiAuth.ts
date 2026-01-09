@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAppAuth0 } from "@core/hooks/useAppAuth0";
 import { apiClient } from "./api-client";
 
@@ -9,17 +8,18 @@ import { apiClient } from "./api-client";
 export const useApiAuth = () => {
   const { getToken, isAuthenticated } = useAppAuth0();
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      // Set the token getter function in the API client
-      apiClient.setTokenGetter(async () => {
-        try {
-          return await getToken();
-        } catch (error) {
-          console.error("Failed to get token from Auth0:", error);
-          return null;
-        }
-      });
-    }
-  }, [isAuthenticated, getToken]);
+  if (isAuthenticated) {
+    // Set the token getter function in the API client synchronously during render
+    // to ensure it's available before any child components mount and attempt requests
+    apiClient.setTokenGetter(async () => {
+      try {
+        return await getToken();
+      } catch (error) {
+        console.error("Failed to get token from Auth0:", error);
+        return null;
+      }
+    });
+  }
+
+  return { isReady: isAuthenticated };
 };

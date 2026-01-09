@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useCallback } from "react";
 
 export const useAppAuth0 = () => {
   const {
@@ -11,13 +12,13 @@ export const useAppAuth0 = () => {
     getAccessTokenSilently,
   } = useAuth0();
 
-  const getToken = async () => {
+  const getToken = useCallback(async () => {
     return await getAccessTokenSilently({
       authorizationParams: {
         audience: import.meta.env.VITE_AUTH0_AUDIENCE,
       },
     });
-  };
+  }, [getAccessTokenSilently]);
 
   const logout = () => auth0Logout({ logoutParams: { returnTo: window.location.origin } });
 

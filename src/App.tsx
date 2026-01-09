@@ -31,7 +31,7 @@ function App() {
   const setIsMobile = useAppStore((state) => state.setIsMobile);
   const collapse = useAppStore((state) => state.collapse);
   const expand = useAppStore((state) => state.expand);
-  useApiAuth();
+  const { isReady } = useApiAuth();
 
   const mobileBreakpoint = 991;
 
@@ -52,6 +52,8 @@ function App() {
   const handleBackdropClick = () => {
     if (isMobile) collapse();
   };
+
+  if (!isReady) return null;
 
   return (
     <Layout style={{ height: "100vh" }}>
