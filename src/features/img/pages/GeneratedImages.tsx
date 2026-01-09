@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Image } from "antd";
 import { useGenerated } from "../hooks/useGenerated";
 import { DownloadOutlined } from "@ant-design/icons";
 
@@ -32,8 +33,8 @@ export const GeneratedImages = () => {
               role="article"
               aria-label={`Generated image ${index + 1}`}
             >
-              <img
-                className="w-full h-64 object-cover"
+              <Image
+                className="w-full h-64 object-cover rounded-lg"
                 src={image.src}
                 alt={`Generated image ${index + 1}`}
                 loading="lazy"
