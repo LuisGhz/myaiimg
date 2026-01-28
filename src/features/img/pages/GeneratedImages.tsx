@@ -40,7 +40,7 @@ export const GeneratedImages = () => {
                 loading="lazy"
               />
               <button
-                className="absolute bottom-2 right-2 py-2 px-3 bg-black/25 hocusvi:bg-black/45 transition-all duration-200 cursor-pointer text-sm font-medium rounded opacity-0 group-hover:opacity-100 focus:opacity-100"
+                className="absolute bottom-2 right-2 py-2 px-3 bg-black/25 hocusvi:bg-black/45 transition-all duration-200 cursor-pointer text-sm font-medium rounded md:opacity-0 group-hover:opacity-100 focus:opacity-100"
                 type="button"
                 onClick={() => handleDownload(image.src, index)}
                 aria-label={`Download generated image ${index + 1}`}
