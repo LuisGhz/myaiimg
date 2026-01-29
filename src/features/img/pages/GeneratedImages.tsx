@@ -21,7 +21,7 @@ export const GeneratedImages = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-6 md:p-4 overflow-auto h-full">
       {images.length === 0 ? (
         <p className="text-gray-500">No images generated yet.</p>
       ) : (
