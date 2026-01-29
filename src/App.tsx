@@ -14,10 +14,16 @@ type AuthAppProps = {
 };
 
 const AuthApp = ({ children }: AuthAppProps) => {
-  const { isLoading, isAuthenticated, login } = useAppAuth0();
+  const { isLoading, isAuthenticated, login, getToken, logout } = useAppAuth0();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) login();
+    else if (isAuthenticated) {
+      getToken().catch(() => {
+        logout()
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, isAuthenticated, login]);
 
   if (!isAuthenticated) return null;
