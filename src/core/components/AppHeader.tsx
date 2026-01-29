@@ -16,7 +16,7 @@ export const AppHeader = () => {
   };
 
   return (
-    <Header className="bg-app flex items-center gap-3 h-14! px-4">
+    <Header className="bg-app flex items-center gap-3 h-14! p-4!">
       {isSidebarCollapsed && (
         <button
           className="text-white cursor-pointer wcag-outline bg-blue-500 dark:bg-transparent  
