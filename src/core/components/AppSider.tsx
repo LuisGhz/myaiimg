@@ -12,6 +12,10 @@ export const AppSider = () => {
   const collapse = useAppStore((state) => state.collapse);
   const { logout } = useAppAuth0();
 
+  const collapseOnMobile = () => {
+    if (isMobile && !isCollapsed) collapse();
+  };
+
   return (
     <Sider
       collapsible
@@ -37,6 +41,7 @@ export const AppSider = () => {
             <Link
               className="text-app hocusvi:bg-blue-500! hocusvi:text-white! dark:hocusvi:bg-gray-900! transc200 block py-2 px-2 wcag-outline"
               to="/generate"
+              onClick={collapseOnMobile}
             >
               <span>Generate a new image</span>
             </Link>
@@ -45,6 +50,7 @@ export const AppSider = () => {
             <Link
               className="text-app hocusvi:bg-blue-500! hocusvi:text-white! dark:hocusvi:bg-gray-900! transc200 block py-2 px-2 wcag-outline"
               to="/generated"
+              onClick={collapseOnMobile}
             >
               <span>View saved images</span>
             </Link>
