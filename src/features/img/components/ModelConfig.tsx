@@ -14,7 +14,7 @@ export const ModelConfig = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [model]);
   return (
-    <section className="flex gap-3 overflow-x-auto">
+    <section className="flex gap-3 overflow-x-auto py-1 md:py-0">
       <Select
         style={{ minWidth: 150 }}
         placeholder="Model"
