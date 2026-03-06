@@ -34,6 +34,10 @@ export const ModelConfig = () => {
             label: "Nano Banana",
           },
           {
+            value: "gemini-3.1-flash-image-preview",
+            label: "Nano Banana 2",
+          },
+          {
             value: "gemini-3-pro-image-preview",
             label: "Nano Banana Pro",
           },
