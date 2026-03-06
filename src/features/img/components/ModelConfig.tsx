@@ -14,12 +14,13 @@ export const ModelConfig = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [model]);
   return (
-    <section className="flex gap-3">
+    <section className="flex gap-3 overflow-x-auto">
       <Select
-        style={{ width: 150 }}
+        style={{ minWidth: 150 }}
         placeholder="Model"
         value={model}
         onChange={(value) => setModel(value)}
+        popupMatchSelectWidth={false}
         options={[
           {
             value: "gpt-image-1.5",
