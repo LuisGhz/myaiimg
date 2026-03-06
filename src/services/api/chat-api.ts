@@ -52,4 +52,10 @@ export const chatApi = {
   generatedImages() {
     return apiClient.get<{ src: string }[]>("/img/generated");
   },
+
+  async downloadImage(src: string): Promise<Blob> {
+    return apiClient.get<Blob>(`/img/download`, {
+      params: { src },
+    });
+  },
 };

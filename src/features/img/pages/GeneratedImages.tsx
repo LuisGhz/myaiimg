@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Image } from "antd";
 import { useGenerated } from "../hooks/useGenerated";
 import { DownloadOutlined } from "@ant-design/icons";
+import { chatApi } from "@/services";
 
 export const GeneratedImages = () => {
   const { getImages, images } = useGenerated();
@@ -11,13 +12,17 @@ export const GeneratedImages = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleDownload = (imageSrc: string, index: number) => {
+  const handleDownload = async (imageSrc: string) => {
+    const blob = await chatApi.downloadImage(imageSrc);
+    const filename = imageSrc.split("/").pop()!;
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = imageSrc;
-    link.download = `generated-image-${index + 1}.png`;
+    link.href = url;
+    link.download = filename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -42,7 +47,7 @@ export const GeneratedImages = () => {
               <button
                 className="absolute bottom-2 right-2 py-2 px-3 bg-black/25 hocusvi:bg-black/45 transition-all duration-200 cursor-pointer text-sm font-medium rounded md:opacity-0 group-hover:opacity-100 focus:opacity-100"
                 type="button"
-                onClick={() => handleDownload(image.src, index)}
+                onClick={() => handleDownload(image.src)}
                 aria-label={`Download generated image ${index + 1}`}
               >
                 <DownloadOutlined className="text-white! text-xl" />

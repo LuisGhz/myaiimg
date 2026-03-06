@@ -54,7 +54,7 @@ class ApiClient {
 
     // If the response is an image (binary), return a Blob so callers
     // can convert it to a File or handle it as needed.
-    if (contentType?.startsWith("image/")) {
+    if (contentType?.startsWith("image/") || contentType === "application/octet-stream") {
       return (await response.blob()) as unknown as T;
     }
 
@@ -64,13 +64,16 @@ class ApiClient {
   async get<T>(endpoint: string, config?: RequestConfig): Promise<T> {
     const token = await this.getAuthToken();
 
-    const response = await fetch(`${this.baseURL}${endpoint}`, {
-      ...config,
+    const { params, ...restConfig } = config ?? {};
+    const queryString = params ? `?${new URLSearchParams(params).toString()}` : "";
+
+    const response = await fetch(`${this.baseURL}${endpoint}${queryString}`, {
+      ...restConfig,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         ...(token && { Authorization: `Bearer ${token}` }),
-        ...config?.headers,
+        ...restConfig.headers,
       },
     });
 
