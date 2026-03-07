@@ -26,7 +26,7 @@ if [ ${#MISSING_VARS[@]} -gt 0 ]; then
 fi
 echo "✓ All environment variables are set"
 
-IMAGE_NAME="${DOCKERHUB_USER}/myaiimg:latest"
+IMAGE_NAME="${DOCKERHUB_USER}/personalwebapss:myaiimg"
 CONTAINER_NAME="myaiimg"
 LOCALPORT=3054
 DOCKERPORT=80
